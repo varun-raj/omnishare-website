@@ -1,22 +1,37 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import { Server, Camera } from 'lucide-react';
 import { UsersIcon } from '@/components/icons/users';
 import { ShieldCheckIcon } from '@/components/icons/shield-check';
 
+interface IconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
 const UserCard: React.FC<{
   title: string;
   description: string;
-  icon: React.ReactNode;
+  icon: React.ReactElement;
   colorClass?: string;
-}> = ({ title, description, icon, colorClass="bg-zinc-100 text-zinc-700" }) => (
-  <div className="p-8 rounded-2xl bg-white border border-zinc-100 shadow-sm hover:shadow-lg hover:border-brand-100 transition-all duration-300 group">
-    <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${colorClass} group-hover:scale-110 transition-transform duration-300`}>
-      {icon}
+}> = ({ title, description, icon, colorClass="bg-zinc-100 text-zinc-700" }) => {
+  const iconRef = useRef<IconHandle>(null);
+
+  return (
+    <div
+      className="p-8 rounded-2xl bg-white border border-zinc-100 shadow-sm hover:shadow-lg hover:border-brand-100 transition-all duration-300 group"
+      onMouseEnter={() => iconRef.current?.startAnimation()}
+      onMouseLeave={() => iconRef.current?.stopAnimation()}
+    >
+      <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 ${colorClass} group-hover:scale-110 transition-transform duration-300`}>
+        {React.cloneElement(icon, { ref: iconRef })}
+      </div>
+      <h3 className="text-xl font-bold mb-3 text-zinc-900">{title}</h3>
+      <p className="text-zinc-500 leading-relaxed">{description}</p>
     </div>
-    <h3 className="text-xl font-bold mb-3 text-zinc-900">{title}</h3>
-    <p className="text-zinc-500 leading-relaxed">{description}</p>
-  </div>
-);
+  );
+};
 
 export const Users: React.FC = () => {
   return (

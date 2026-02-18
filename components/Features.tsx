@@ -1,4 +1,6 @@
-import React from 'react';
+'use client';
+
+import React, { useRef } from 'react';
 import { Aperture } from 'lucide-react';
 import { SmartphoneNfcIcon } from '@/components/icons/smartphone-nfc';
 import { WifiIcon } from '@/components/icons/wifi';
@@ -8,26 +10,38 @@ import { RefreshCWIcon } from '@/components/icons/refresh-cw';
 import { MapPinIcon } from '@/components/icons/map-pin';
 import { SparklesIcon } from '@/components/icons/sparkles';
 
+interface IconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
 const FeatureCard: React.FC<{
   title: string;
   description: string;
-  icon?: React.ReactNode;
+  icon?: React.ReactElement;
   className?: string;
   iconBg?: string;
   accentColor?: string;
   children?: React.ReactNode;
-}> = ({ title, description, icon, className = "", iconBg = "bg-indigo-500", accentColor = "from-indigo-500/10", children }) => (
-  <div className={`group relative bg-white border border-zinc-200/80 rounded-3xl p-8 hover:shadow-2xl hover:shadow-zinc-900/[0.08] transition-all duration-500 flex flex-col hover:-translate-y-1 overflow-hidden ${className}`}>
-    {/* Subtle gradient glow on hover */}
-    <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-radial ${accentColor} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-y-10 translate-x-10 pointer-events-none`} />
-    <div className={`relative mb-5 w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center text-white shadow-lg shadow-zinc-900/10`}>
-      {icon}
+}> = ({ title, description, icon, className = "", iconBg = "bg-indigo-500", accentColor = "from-indigo-500/10", children }) => {
+  const iconRef = useRef<IconHandle>(null);
+
+  return (
+    <div
+      className={`group relative bg-white border border-zinc-200/80 rounded-3xl p-8 hover:shadow-2xl hover:shadow-zinc-900/[0.08] transition-all duration-500 flex flex-col hover:-translate-y-1 overflow-hidden ${className}`}
+      onMouseEnter={() => iconRef.current?.startAnimation()}
+      onMouseLeave={() => iconRef.current?.stopAnimation()}
+    >
+      <div className={`absolute top-0 right-0 w-40 h-40 bg-gradient-radial ${accentColor} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 -translate-y-10 translate-x-10 pointer-events-none`} />
+      <div className={`relative mb-5 w-12 h-12 rounded-2xl ${iconBg} flex items-center justify-center text-white shadow-lg shadow-zinc-900/10`}>
+        {icon && React.cloneElement(icon, { ref: iconRef })}
+      </div>
+      <h3 className="text-xl font-bold text-zinc-900 mb-2">{title}</h3>
+      <p className="text-zinc-500 text-lg leading-relaxed mb-6">{description}</p>
+      {children}
     </div>
-    <h3 className="text-xl font-bold text-zinc-900 mb-2">{title}</h3>
-    <p className="text-zinc-500 text-lg leading-relaxed mb-6">{description}</p>
-    {children}
-  </div>
-);
+  );
+};
 
 export const Features: React.FC = () => {
   return (
@@ -45,7 +59,6 @@ export const Features: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Large Card - Album Management */}
           <FeatureCard
             title="Unified Album Management"
             description="View grid or list views with metadata badges. Auto-detect providers from share links and import in bulk."
@@ -55,7 +68,6 @@ export const Features: React.FC = () => {
             accentColor="from-indigo-500/10"
           />
 
-          {/* Tall Card - Offline */}
           <FeatureCard
             title="Offline First"
             description="Cached albums and thumbnails available offline. Your upload queue persists and resumes when you reconnect."
@@ -71,7 +83,6 @@ export const Features: React.FC = () => {
              </div>
           </FeatureCard>
 
-          {/* Regular Card - Search */}
           <FeatureCard
             title="Spotlight Search"
             description="Albums are indexed in system-wide Spotlight. Jump directly to your memories from the home screen."
@@ -80,7 +91,6 @@ export const Features: React.FC = () => {
             accentColor="from-amber-500/10"
           />
 
-          {/* Regular Card - Upload */}
           <FeatureCard
             title="Background Uploads"
             description="Central queue with status tracking. Uploads continue even when the app is backgrounded."
@@ -89,8 +99,7 @@ export const Features: React.FC = () => {
             accentColor="from-green-500/10"
           />
 
-           {/* Large Card - EXIF */}
-           <FeatureCard
+          <FeatureCard
             title="Pro-Level Metadata"
             description="View full EXIF data including camera make, lens, exposure settings, ISO, and GPS location map."
             className="md:col-span-2"
@@ -118,7 +127,6 @@ export const Features: React.FC = () => {
             </div>
           </FeatureCard>
 
-          {/* Regular Card - Sync */}
           <FeatureCard
             title="iCloud Sync"
             description="Your album list syncs across all devices via CloudKit. Setup once, view everywhere."
@@ -127,7 +135,6 @@ export const Features: React.FC = () => {
             accentColor="from-blue-500/10"
           />
 
-          {/* Regular Card - Location */}
           <FeatureCard
             title="Map View"
             description="See exactly where your memories were made with integrated GPS location data."
@@ -135,8 +142,8 @@ export const Features: React.FC = () => {
             iconBg="bg-gradient-to-br from-emerald-500 to-teal-600"
             accentColor="from-emerald-500/10"
           />
-           {/* Regular Card - Lightbox */}
-           <FeatureCard
+
+          <FeatureCard
             title="Native Lightbox"
             description="Fluid gestures, double-tap zoom, and parallax animations for an immersive viewing experience."
             icon={<SmartphoneNfcIcon size={22} />}

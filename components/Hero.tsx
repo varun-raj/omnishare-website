@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Apple } from 'lucide-react';
 import { ArrowRightIcon } from '@/components/icons/arrow-right';
 import { RefreshCWIcon } from '@/components/icons/refresh-cw';
@@ -10,32 +10,52 @@ import { LockIcon } from '@/components/icons/lock';
 import { GripIcon } from '@/components/icons/grip';
 import { SearchIcon } from '@/components/icons/search';
 
+interface IconHandle {
+  startAnimation: () => void;
+  stopAnimation: () => void;
+}
+
 interface FloatingCardProps {
-  children: React.ReactNode;
+  icon: React.ReactElement;
+  title: string;
+  subtitle: string;
   className: string;
+  iconClassName: string;
+  titleClassName: string;
+  subtitleClassName: string;
   factor?: number;
   mousePos: { x: number; y: number };
 }
 
-// Floating Card Component with Parallax Support
 const FloatingCard: React.FC<FloatingCardProps> = ({
-  children,
+  icon,
+  title,
+  subtitle,
   className,
+  iconClassName,
+  titleClassName,
+  subtitleClassName,
   factor = 1,
   mousePos
 }) => {
-  // Calculate parallax offset (opposite to mouse movement for depth)
+  const iconRef = useRef<IconHandle>(null);
   const translateX = mousePos.x * factor;
   const translateY = mousePos.y * factor;
 
   return (
     <div
       className={`absolute z-10 p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border flex items-center gap-3 transition-transform duration-100 ease-out ${className}`}
-      style={{
-        transform: `translate(${translateX}px, ${translateY}px)`
-      }}
+      style={{ transform: `translate(${translateX}px, ${translateY}px)` }}
+      onMouseEnter={() => iconRef.current?.startAnimation()}
+      onMouseLeave={() => iconRef.current?.stopAnimation()}
     >
-      {children}
+      <div className={`w-10 h-10 rounded-full bg-white flex items-center justify-center shadow-sm shrink-0 ${iconClassName}`}>
+        {React.cloneElement(icon, { ref: iconRef })}
+      </div>
+      <div className="text-left">
+        <p className={`text-sm font-bold ${titleClassName}`}>{title}</p>
+        <p className={`text-xs ${subtitleClassName}`}>{subtitle}</p>
+      </div>
     </div>
   );
 };
@@ -45,8 +65,6 @@ export const Hero: React.FC = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      // Calculate normalized mouse position from center (-1 to 1 range approx)
-      // Multiplied by a constant to determine max pixel movement
       const x = (e.clientX - window.innerWidth / 2) / 25;
       const y = (e.clientY - window.innerHeight / 2) / 25;
       setMousePos({ x, y });
@@ -108,73 +126,78 @@ export const Hero: React.FC = () => {
                  />
             </div>
 
-            {/* Parallax Floating Cards (6 items) */}
+            {/* Parallax Floating Cards */}
+            <FloatingCard
+              className="hidden md:flex top-12 left-0 lg:-left-8 bg-green-100 border-green-200/50"
+              factor={-1.5}
+              mousePos={mousePos}
+              icon={<RefreshCWIcon size={20} />}
+              iconClassName="text-green-600"
+              title="Sync Photos"
+              titleClassName="text-green-900"
+              subtitle="Automatic Backup"
+              subtitleClassName="text-green-700"
+            />
 
-            {/* 1. Top Left - Sync Photos (was Sync Active) */}
-            <FloatingCard className="hidden md:flex top-12 left-0 lg:-left-8 bg-green-100 border-green-200/50" factor={-1.5} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-green-600 shadow-sm shrink-0">
-                    <RefreshCWIcon size={20} />
-                </div>
-                <div className="text-left">
-                    <p className="text-sm font-bold text-green-900">Sync Photos</p>
-                    <p className="text-xs text-green-700">Automatic Backup</p>
-                </div>
-            </FloatingCard>
+            <FloatingCard
+              className="hidden md:flex top-24 right-4 lg:right-0 bg-blue-100 border-blue-200/50"
+              factor={-0.8}
+              mousePos={mousePos}
+              icon={<LockIcon size={20} />}
+              iconClassName="text-blue-600"
+              title="Private"
+              titleClassName="text-blue-900"
+              subtitle="FaceID Secured"
+              subtitleClassName="text-blue-700"
+            />
 
-            {/* 2. Top Right - Private (was Encrypted) */}
-            <FloatingCard className="hidden md:flex top-24 right-4 lg:right-0 bg-blue-100 border-blue-200/50" factor={-0.8} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
-                    <LockIcon size={20} />
-                </div>
-                <div className="text-left">
-                    <p className="text-sm font-bold text-blue-900">Private</p>
-                    <p className="text-xs text-blue-700">FaceID Secured</p>
-                </div>
-            </FloatingCard>
+            <FloatingCard
+              className="hidden md:flex top-[40%] left-8 lg:left-0 bg-orange-100 border-orange-200/50"
+              factor={-2.2}
+              mousePos={mousePos}
+              icon={<MapPinIcon size={20} />}
+              iconClassName="text-orange-600"
+              title="Tokyo, Japan"
+              titleClassName="text-orange-900"
+              subtitle="Added to map"
+              subtitleClassName="text-orange-700"
+            />
 
-            {/* 3. Middle Left - Location */}
-            <FloatingCard className="hidden md:flex top-[40%] left-8 lg:left-0 bg-orange-100 border-orange-200/50" factor={-2.2} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-orange-600 shadow-sm shrink-0">
-                    <MapPinIcon size={20} />
-                </div>
-                <div className="text-left">
-                    <p className="text-sm font-bold text-orange-900">Tokyo, Japan</p>
-                    <p className="text-xs text-orange-700">Added to map</p>
-                </div>
-            </FloatingCard>
+            <FloatingCard
+              className="hidden md:flex top-[45%] right-0 lg:-right-12 bg-indigo-100 border-indigo-200/50"
+              factor={-1.2}
+              mousePos={mousePos}
+              icon={<GripIcon size={20} />}
+              iconClassName="text-indigo-600"
+              title="Home Widgets"
+              titleClassName="text-indigo-900"
+              subtitle="Daily Highlights"
+              subtitleClassName="text-indigo-700"
+            />
 
-            {/* 4. Middle Right - Home Page Widgets (was Smart Sort) */}
-            <FloatingCard className="hidden md:flex top-[45%] right-0 lg:-right-12 bg-indigo-100 border-indigo-200/50" factor={-1.2} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-indigo-600 shadow-sm shrink-0">
-                    <GripIcon size={20} />
-                </div>
-                <div className="text-left">
-                    <p className="text-sm font-bold text-indigo-900">Home Widgets</p>
-                    <p className="text-xs text-indigo-700">Daily Highlights</p>
-                </div>
-            </FloatingCard>
+            <FloatingCard
+              className="hidden md:flex bottom-32 left-12 lg:left-8 bg-pink-100 border-pink-200/50"
+              factor={-0.9}
+              mousePos={mousePos}
+              icon={<SearchIcon size={20} />}
+              iconClassName="text-pink-600"
+              title="Search"
+              titleClassName="text-pink-900"
+              subtitle={'"Sunset at beach"'}
+              subtitleClassName="text-pink-700"
+            />
 
-             {/* 5. Bottom Left - Search */}
-             <FloatingCard className="hidden md:flex bottom-32 left-12 lg:left-8 bg-pink-100 border-pink-200/50" factor={-0.9} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-pink-600 shadow-sm shrink-0">
-                    <SearchIcon size={20} />
-                </div>
-                <div className="text-left">
-                    <p className="text-sm font-bold text-pink-900">Search</p>
-                    <p className="text-xs text-pink-700">&quot;Sunset at beach&quot;</p>
-                </div>
-            </FloatingCard>
-
-            {/* 6. Bottom Right - Backed Up */}
-            <FloatingCard className="hidden md:flex bottom-40 right-12 lg:right-4 bg-purple-100 border-purple-200/50" factor={-1.8} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-purple-600 shadow-sm shrink-0">
-                    <CircleCheckIcon size={20} />
-                </div>
-                <div className="text-left">
-                    <p className="text-sm font-bold text-purple-900">Backed Up</p>
-                    <p className="text-xs text-purple-700">1,204 Photos</p>
-                </div>
-            </FloatingCard>
+            <FloatingCard
+              className="hidden md:flex bottom-40 right-12 lg:right-4 bg-purple-100 border-purple-200/50"
+              factor={-1.8}
+              mousePos={mousePos}
+              icon={<CircleCheckIcon size={20} />}
+              iconClassName="text-purple-600"
+              title="Backed Up"
+              titleClassName="text-purple-900"
+              subtitle="1,204 Photos"
+              subtitleClassName="text-purple-700"
+            />
 
         </div>
       </div>
