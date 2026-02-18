@@ -1,0 +1,5 @@
+{
+  "name": "OmniAlbum",
+  "description": "A unified interface for self-hosted photo albums on iOS.",
+  "requestFramePermissions": []
+}
