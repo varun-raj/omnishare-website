@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import { ArrowRight, Apple, RefreshCw, MapPin, CheckCircle, Lock, Layout, Search } from 'lucide-react';
 
@@ -94,20 +96,14 @@ export const Hero: React.FC = () => {
             <div className="relative z-20 transition-transform duration-300 ease-out flex justify-center items-start" style={{ transform: `translate(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px)` }}>
                  <div className="relative w-[300px] md:w-[340px] aspect-[9/19.5] bg-zinc-900 rounded-[3.5rem] shadow-2xl p-3 ring-1 ring-zinc-900/10 border-4 border-zinc-800">
                     {/* Screen Container */}
-                    <div className="w-full h-full bg-black rounded-[2.8rem] overflow-hidden relative">
+                    <div className="w-full h-full bg-white rounded-[2.8rem] overflow-hidden relative">
                          {/* Dynamic Island */}
                          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-b-xl z-30"></div>
-                         
-                         {/* Status Bar Mockup */}
-                         <div className="absolute top-3 left-8 z-20 text-[11px] font-semibold text-white tracking-wide">9:41</div>
-                         <div className="absolute top-3 right-8 z-20 flex gap-1.5 items-center">
-                            <div className="w-4 h-2.5 bg-white rounded-[2px]"></div>
-                         </div>
 
-                         <img 
-                            src="https://images.unsplash.com/photo-1616348436168-de43ad0db179?q=80&w=600&auto=format&fit=crop" 
-                            alt="OmniAlbum iPhone Interface" 
-                            className="w-full h-full object-cover"
+                         <img
+                            src="/hero-screenshot.png"
+                            alt="OmniAlbum iPhone Interface"
+                            className="w-full h-full object-cover object-top"
                          />
                     </div>
                  </div>

@@ -1,13 +1,16 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
 
 export const Navbar: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const location = useLocation();
-  const navigate = useNavigate();
-  const isHome = location.pathname === '/';
+  const pathname = usePathname();
+  const router = useRouter();
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,7 +23,7 @@ export const Navbar: React.FC = () => {
   const scrollToSection = (id: string) => {
     setIsMobileMenuOpen(false);
     if (!isHome) {
-      navigate('/');
+      router.push('/');
       // Give time for navigation to happen
       setTimeout(() => {
         const element = document.getElementById(id);
@@ -40,12 +43,8 @@ export const Navbar: React.FC = () => {
     <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-white/80 backdrop-blur-md border-b border-zinc-200 shadow-sm' : 'bg-transparent'}`}>
       <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 flex items-center justify-center shadow-md">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" className="w-5 h-5 text-white">
-              <path d="M4 16l6-6 3 3 5-5" strokeLinecap="round" strokeLinejoin="round"/>
-            </svg>
-          </div>
+        <Link href="/" className="flex items-center gap-2.5" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+          <img src="/logo.svg" alt="OmniAlbum" className="w-8 h-8" />
           <span className="font-bold text-xl tracking-tight text-zinc-900">OmniAlbum</span>
         </Link>
 
@@ -64,7 +63,7 @@ export const Navbar: React.FC = () => {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <button 
+        <button
           className="md:hidden text-zinc-900"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
