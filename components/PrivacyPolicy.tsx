@@ -32,7 +32,7 @@ export const PrivacyPolicy: React.FC = () => {
           <p className="mb-4">The App may interface with third-party services only at your explicit direction (e.g., sharing a photo to Instagram). In these cases, the data handling is governed by the privacy policy of the receiving service.</p>
 
           <h2 className="text-2xl font-bold mt-12 mb-4 text-zinc-900">5. Contact Us</h2>
-          <p className="mb-4">If you have any questions about this Privacy Policy, please contact us at <a href="mailto:privacy@omnialbum.app" className="text-brand-600 hover:text-brand-800 underline">privacy@omnialbum.app</a>.</p>
+          <p className="mb-4">If you have any questions about this Privacy Policy, please contact us at <a href="mailto:varunraj.026@gmail.com" className="text-brand-600 hover:text-brand-800 underline">varunraj.026@gmail.com</a>.</p>
        </div>
     </div>
   );

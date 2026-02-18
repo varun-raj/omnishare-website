@@ -32,7 +32,7 @@ export const Terms: React.FC = () => {
           <p className="mb-4">We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will provide at least 30 days' notice prior to any new terms taking effect.</p>
 
           <h2 className="text-2xl font-bold mt-12 mb-4 text-zinc-900">7. Contact Us</h2>
-          <p className="mb-4">If you have any questions about these Terms, please contact us at <a href="mailto:legal@omnialbum.app" className="text-brand-600 hover:text-brand-800 underline">legal@omnialbum.app</a>.</p>
+          <p className="mb-4">If you have any questions about these Terms, please contact us at <a href="mailto:varunraj.026@gmail.com" className="text-brand-600 hover:text-brand-800 underline">varunraj.026@gmail.com</a>.</p>
        </div>
     </div>
   );
