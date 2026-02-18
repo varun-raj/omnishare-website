@@ -13,6 +13,9 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: 'OmniAlbum - Every server. One album.',
   description: 'A unified interface for self-hosted photo albums on iOS.',
+  icons: {
+    icon: '/logo.svg',
+  },
 };
 
 export default function RootLayout({
