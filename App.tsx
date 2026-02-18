@@ -3,6 +3,7 @@ import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { Features } from './components/Features';
+import { AppleEcosystem } from './components/AppleEcosystem';
 import { Providers } from './components/Providers';
 import { Users } from './components/Users';
 import { Footer } from './components/Footer';
@@ -26,6 +27,7 @@ const LandingPage = () => (
   <>
     <Hero />
     <Features />
+    <AppleEcosystem />
     <Providers />
     <Users />
     <AndroidCTA />

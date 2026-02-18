@@ -1,6 +1,5 @@
 import React from 'react';
 import { Cloud, WifiOff, Smartphone, Search, Upload, RefreshCw, Aperture, MapPin } from 'lucide-react';
-import { ImagePlaceholder } from './ImagePlaceholder';
 
 const FeatureCard: React.FC<{
   title: string;
@@ -36,19 +35,10 @@ export const Features: React.FC = () => {
           <FeatureCard 
             title="Unified Album Management" 
             description="View grid or list views with metadata badges. Auto-detect providers from share links and import in bulk."
-            className="md:col-span-2 min-h-[400px]"
+            className="md:col-span-2"
             icon={<Smartphone size={24} />}
             iconColor="text-indigo-500"
-          >
-             <div className="flex-1 w-full rounded-xl overflow-hidden mt-auto border border-zinc-100 relative shadow-inner">
-                <ImagePlaceholder 
-                    height="h-full" 
-                    text="Unified Library Interface" 
-                    src="https://picsum.photos/800/400?grayscale"
-                    className="rounded-none border-0"
-                />
-             </div>
-          </FeatureCard>
+          />
 
           {/* Tall Card - Offline */}
           <FeatureCard 
