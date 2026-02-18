@@ -1,36 +1,37 @@
 import React from 'react';
+import { Tablet, Apple } from 'lucide-react';
+import { SmartphoneNfcIcon } from '@/components/icons/smartphone-nfc';
+import { GripIcon } from '@/components/icons/grip';
 
 export const AppleEcosystem: React.FC = () => {
   return (
     <section className="py-24 bg-white">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 text-zinc-900 tracking-tight">Works Across All Your Apple Devices</h2>
+        <div className="text-center mb-16">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-200 text-sm font-medium text-zinc-600 mb-6 shadow-sm">
+            <Apple size={14} fill="currentColor" />
+            Native Apple Experience
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight">Works Across All Your Apple Devices</h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             {/* iPhone Card */}
             <div className="bg-zinc-50 rounded-[2.5rem] p-8 md:p-10 pb-0 md:pb-0 overflow-hidden flex flex-col h-[480px] md:h-[520px] relative group">
                 <div className="z-10 relative">
-                    <span className="text-zinc-500 font-medium mb-2 block text-sm">iPhone</span>
+                    <span className="text-zinc-500 font-medium mb-2 flex items-center gap-1.5 text-sm"><SmartphoneNfcIcon size={14} />iPhone</span>
                     <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-4">Every server, one tap away.</h3>
                 </div>
                 <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-28 transition-transform duration-500 group-hover:translate-y-20">
-                    <div className="relative w-[220px] h-[450px] bg-zinc-900 rounded-[2.8rem] p-2.5 shadow-2xl ring-1 ring-zinc-900/10 border-[5px] border-zinc-800">
-                        <div className="absolute top-20 -left-[7px] h-6 w-[5px] bg-zinc-700 rounded-l"></div>
-                        <div className="absolute top-30 -left-[7px] h-10 w-[5px] bg-zinc-700 rounded-l"></div>
-                        <div className="absolute top-24 -right-[7px] h-12 w-[5px] bg-zinc-700 rounded-r"></div>
-                        <div className="w-full h-full bg-white rounded-[2.2rem] overflow-hidden relative border border-zinc-200">
-                             <div className="absolute top-2.5 left-1/2 -translate-x-1/2 w-[70px] h-[22px] bg-black rounded-full z-20"></div>
-                             <img src="/hero-screenshot.png" className="w-full h-full object-cover object-top" alt="OmniAlbum - Browse albums from Immich, Nextcloud, PhotoPrism, Lychee and Ente" />
-                        </div>
-                    </div>
+                    <img src="/iphone-albums.png" className="w-[220px] drop-shadow-2xl" alt="OmniAlbum - Browse albums from Immich, Nextcloud, PhotoPrism, Lychee and Ente" />
                 </div>
             </div>
 
             {/* iPad Card */}
             <div className="bg-zinc-50 rounded-[2.5rem] p-8 md:p-10 overflow-hidden flex flex-col h-[480px] md:h-[520px] relative group">
                 <div className="z-10 relative mb-6">
-                    <span className="text-zinc-500 font-medium mb-2 block text-sm">iPad</span>
+                    <span className="text-zinc-500 font-medium mb-2 flex items-center gap-1.5 text-sm"><Tablet size={14} />iPad</span>
                     <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-4">More screen. More insight.</h3>
                 </div>
                 <div className="absolute right-[-10%] bottom-[-10%] w-[105%] transition-transform duration-500 group-hover:-translate-x-3 group-hover:-translate-y-3">
@@ -46,7 +47,7 @@ export const AppleEcosystem: React.FC = () => {
             {/* Widgets Card */}
             <div className="bg-zinc-50 rounded-[2.5rem] p-8 md:p-10 overflow-hidden flex flex-col h-[480px] md:h-[520px] relative justify-between group">
                  <div className="z-10 relative">
-                    <span className="text-zinc-500 font-medium mb-2 block text-sm">Widgets</span>
+                    <span className="text-zinc-500 font-medium mb-2 flex items-center gap-1.5 text-sm"><GripIcon size={14} />Widgets</span>
                     <h3 className="text-2xl md:text-3xl font-bold text-zinc-900 mb-4">Always on your home screen.</h3>
                 </div>
                 <div className="absolute bottom-0 left-0 right-0 h-2/3 flex items-center justify-center">

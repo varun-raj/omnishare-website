@@ -1,5 +1,7 @@
 import React from 'react';
-import { Github, Twitter, Mail } from 'lucide-react';
+import { GithubIcon } from '@/components/icons/github';
+import { TwitterIcon } from '@/components/icons/twitter';
+import { MailCheckIcon } from '@/components/icons/mail-check';
 import Link from 'next/link';
 
 export const Footer: React.FC = () => {
@@ -26,13 +28,13 @@ export const Footer: React.FC = () => {
 
             <div className="flex gap-6 border-t md:border-t-0 md:border-l border-zinc-100 pt-6 md:pt-0 md:pl-8">
                 <a href="#" className="text-zinc-400 hover:text-brand-600 transition-colors">
-                    <Github size={20} />
+                    <GithubIcon size={20} />
                 </a>
                 <a href="#" className="text-zinc-400 hover:text-brand-600 transition-colors">
-                    <Twitter size={20} />
+                    <TwitterIcon size={20} />
                 </a>
                 <a href="#" className="text-zinc-400 hover:text-brand-600 transition-colors">
-                    <Mail size={20} />
+                    <MailCheckIcon size={20} />
                 </a>
             </div>
           </div>

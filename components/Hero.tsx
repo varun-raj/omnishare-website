@@ -1,7 +1,14 @@
 'use client';
 
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Apple, RefreshCw, MapPin, CheckCircle, Lock, Layout, Search } from 'lucide-react';
+import { Apple } from 'lucide-react';
+import { ArrowRightIcon } from '@/components/icons/arrow-right';
+import { RefreshCWIcon } from '@/components/icons/refresh-cw';
+import { MapPinIcon } from '@/components/icons/map-pin';
+import { CircleCheckIcon } from '@/components/icons/circle-check';
+import { LockIcon } from '@/components/icons/lock';
+import { GripIcon } from '@/components/icons/grip';
+import { SearchIcon } from '@/components/icons/search';
 
 interface FloatingCardProps {
   children: React.ReactNode;
@@ -11,9 +18,9 @@ interface FloatingCardProps {
 }
 
 // Floating Card Component with Parallax Support
-const FloatingCard: React.FC<FloatingCardProps> = ({ 
-  children, 
-  className, 
+const FloatingCard: React.FC<FloatingCardProps> = ({
+  children,
+  className,
   factor = 1,
   mousePos
 }) => {
@@ -22,10 +29,10 @@ const FloatingCard: React.FC<FloatingCardProps> = ({
   const translateY = mousePos.y * factor;
 
   return (
-    <div 
+    <div
       className={`absolute z-10 p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border flex items-center gap-3 transition-transform duration-100 ease-out ${className}`}
-      style={{ 
-        transform: `translate(${translateX}px, ${translateY}px)` 
+      style={{
+        transform: `translate(${translateX}px, ${translateY}px)`
       }}
     >
       {children}
@@ -51,15 +58,15 @@ export const Hero: React.FC = () => {
 
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden bg-white selection:bg-zinc-100">
-      
+
       {/* Light Patterns */}
       <div className="absolute top-0 left-0 w-[800px] h-[800px] bg-gradient-radial from-blue-100/40 to-transparent blur-3xl -translate-x-1/3 -translate-y-1/3 pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-[600px] h-[600px] bg-gradient-radial from-purple-100/40 to-transparent blur-3xl translate-x-1/3 translate-y-1/3 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 text-center relative z-10">
-        
+
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-zinc-50 border border-zinc-200 text-sm font-medium text-zinc-600 mb-8 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200 text-sm font-medium text-emerald-700 mb-8 shadow-sm">
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
             <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
@@ -82,39 +89,31 @@ export const Hero: React.FC = () => {
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 mb-20">
           <button className="flex items-center gap-2 bg-zinc-900 text-white px-8 py-4 rounded-full font-semibold hover:bg-zinc-800 transition-all hover:scale-105 active:scale-95 shadow-xl shadow-zinc-900/10">
             <Apple fill="currentColor" size={20} />
-            Download for iOS
+            Get for $8.99
           </button>
           <button className="flex items-center gap-2 px-8 py-4 rounded-full font-medium text-zinc-600 hover:text-zinc-900 bg-white border border-zinc-200 hover:border-zinc-300 transition-all shadow-sm hover:shadow-md group">
-            View Features <ArrowRight size={18} className="text-zinc-400 group-hover:text-zinc-900 group-hover:translate-x-1 transition-all" />
+            View Features <ArrowRightIcon size={18} className="text-zinc-400 group-hover:text-zinc-900 group-hover:translate-x-1 transition-all" />
           </button>
         </div>
 
         {/* Central Visual Area */}
         <div className="relative w-full max-w-4xl mx-auto h-[650px] md:h-[800px] flex justify-center mt-8">
-            
-            {/* Main Phone Image Frame */}
-            <div className="relative z-20 transition-transform duration-300 ease-out flex justify-center items-start" style={{ transform: `translate(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px)` }}>
-                 <div className="relative w-[300px] md:w-[340px] aspect-[9/19.5] bg-zinc-900 rounded-[3.5rem] shadow-2xl p-3 ring-1 ring-zinc-900/10 border-4 border-zinc-800">
-                    {/* Screen Container */}
-                    <div className="w-full h-full bg-white rounded-[2.8rem] overflow-hidden relative">
-                         {/* Dynamic Island */}
-                         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-28 h-7 bg-black rounded-b-xl z-30"></div>
 
-                         <img
-                            src="/hero-screenshot.png"
-                            alt="OmniAlbum iPhone Interface"
-                            className="w-full h-full object-cover object-top"
-                         />
-                    </div>
-                 </div>
+            {/* Main Phone Image */}
+            <div className="relative z-20 transition-transform duration-300 ease-out flex justify-center items-start" style={{ transform: `translate(${mousePos.x * -0.5}px, ${mousePos.y * -0.5}px)` }}>
+                 <img
+                    src="/hero-screenshot.png"
+                    alt="OmniAlbum iPhone Interface"
+                    className="w-[300px] md:w-[340px] drop-shadow-2xl"
+                 />
             </div>
 
             {/* Parallax Floating Cards (6 items) */}
-            
+
             {/* 1. Top Left - Sync Photos (was Sync Active) */}
             <FloatingCard className="hidden md:flex top-12 left-0 lg:-left-8 bg-green-100 border-green-200/50" factor={-1.5} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-green-600 shadow-sm shrink-0">
-                    <RefreshCw size={20} />
+                    <RefreshCWIcon size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-green-900">Sync Photos</p>
@@ -125,7 +124,7 @@ export const Hero: React.FC = () => {
             {/* 2. Top Right - Private (was Encrypted) */}
             <FloatingCard className="hidden md:flex top-24 right-4 lg:right-0 bg-blue-100 border-blue-200/50" factor={-0.8} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
-                    <Lock size={20} />
+                    <LockIcon size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-blue-900">Private</p>
@@ -136,7 +135,7 @@ export const Hero: React.FC = () => {
             {/* 3. Middle Left - Location */}
             <FloatingCard className="hidden md:flex top-[40%] left-8 lg:left-0 bg-orange-100 border-orange-200/50" factor={-2.2} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-orange-600 shadow-sm shrink-0">
-                    <MapPin size={20} />
+                    <MapPinIcon size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-orange-900">Tokyo, Japan</p>
@@ -147,7 +146,7 @@ export const Hero: React.FC = () => {
             {/* 4. Middle Right - Home Page Widgets (was Smart Sort) */}
             <FloatingCard className="hidden md:flex top-[45%] right-0 lg:-right-12 bg-indigo-100 border-indigo-200/50" factor={-1.2} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-indigo-600 shadow-sm shrink-0">
-                    <Layout size={20} />
+                    <GripIcon size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-indigo-900">Home Widgets</p>
@@ -158,18 +157,18 @@ export const Hero: React.FC = () => {
              {/* 5. Bottom Left - Search */}
              <FloatingCard className="hidden md:flex bottom-32 left-12 lg:left-8 bg-pink-100 border-pink-200/50" factor={-0.9} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-pink-600 shadow-sm shrink-0">
-                    <Search size={20} />
+                    <SearchIcon size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-pink-900">Search</p>
-                    <p className="text-xs text-pink-700">"Sunset at beach"</p>
+                    <p className="text-xs text-pink-700">&quot;Sunset at beach&quot;</p>
                 </div>
             </FloatingCard>
 
             {/* 6. Bottom Right - Backed Up */}
             <FloatingCard className="hidden md:flex bottom-40 right-12 lg:right-4 bg-purple-100 border-purple-200/50" factor={-1.8} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-purple-600 shadow-sm shrink-0">
-                    <CheckCircle size={20} />
+                    <CircleCheckIcon size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-purple-900">Backed Up</p>

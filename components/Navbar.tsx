@@ -1,7 +1,8 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import { Menu, X } from 'lucide-react';
+import { MenuIcon } from '@/components/icons/menu';
+import { XIcon } from '@/components/icons/x';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 
@@ -58,7 +59,7 @@ export const Navbar: React.FC = () => {
         {/* CTA */}
         <div className="hidden md:block">
           <a href="#" className="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-lg shadow-zinc-900/10 inline-block">
-            Download App
+            Get App — $8.99
           </a>
         </div>
 
@@ -67,7 +68,7 @@ export const Navbar: React.FC = () => {
           className="md:hidden text-zinc-900"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <XIcon size={24} /> : <MenuIcon size={24} />}
         </button>
       </div>
 
@@ -78,7 +79,7 @@ export const Navbar: React.FC = () => {
            <button onClick={() => scrollToSection('providers')} className="text-left text-zinc-600 hover:text-brand-600 font-medium bg-transparent border-0">Providers</button>
            <button onClick={() => scrollToSection('users')} className="text-left text-zinc-600 hover:text-brand-600 font-medium bg-transparent border-0">Target Users</button>
            <a href="#" className="bg-brand-600 text-white px-5 py-3 rounded-xl text-sm font-semibold w-full mt-4 shadow-lg shadow-brand-500/20 text-center block">
-            Download App
+            Get App — $8.99
           </a>
         </div>
       )}

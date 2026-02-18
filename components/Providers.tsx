@@ -1,5 +1,9 @@
 import React from 'react';
-import { Check, X, Shield, Lock, Eye, Upload, Video } from 'lucide-react';
+import { Check, X, Video } from 'lucide-react';
+import { EyeIcon } from '@/components/icons/eye';
+import { UploadIcon } from '@/components/icons/upload';
+import { LockIcon } from '@/components/icons/lock';
+import { ShieldCheckIcon } from '@/components/icons/shield-check';
 import { Provider } from '../types';
 
 const providers: Provider[] = [
@@ -61,11 +65,11 @@ export const Providers: React.FC = () => {
             <thead>
               <tr className="border-b border-zinc-200 bg-zinc-50/80">
                 <th className="p-6 text-zinc-500 font-medium">Provider</th>
-                <th className="p-6 text-zinc-500 font-medium text-center"><Eye size={18} className="mx-auto" /></th>
-                <th className="p-6 text-zinc-500 font-medium text-center"><Upload size={18} className="mx-auto" /></th>
-                <th className="p-6 text-zinc-500 font-medium text-center"><Lock size={18} className="mx-auto" /></th>
-                <th className="p-6 text-zinc-500 font-medium text-center">EXIF</th>
-                <th className="p-6 text-zinc-500 font-medium text-center"><Video size={18} className="mx-auto" /></th>
+                <th className="p-6 text-zinc-500 font-medium text-center"><div className="flex flex-col items-center gap-1"><EyeIcon size={18} /><span className="text-xs">View</span></div></th>
+                <th className="p-6 text-zinc-500 font-medium text-center"><div className="flex flex-col items-center gap-1"><UploadIcon size={18} /><span className="text-xs">Upload</span></div></th>
+                <th className="p-6 text-zinc-500 font-medium text-center"><div className="flex flex-col items-center gap-1"><LockIcon size={18} /><span className="text-xs">Password</span></div></th>
+                <th className="p-6 text-zinc-500 font-medium text-center"><div className="flex flex-col items-center gap-1"><ShieldCheckIcon size={18} /><span className="text-xs">EXIF</span></div></th>
+                <th className="p-6 text-zinc-500 font-medium text-center"><div className="flex flex-col items-center gap-1"><Video size={18} className="mx-auto" /><span className="text-xs">Video</span></div></th>
               </tr>
             </thead>
             <tbody>

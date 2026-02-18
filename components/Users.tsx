@@ -1,5 +1,7 @@
 import React from 'react';
-import { Server, Users as UsersIcon, Camera, ShieldCheck } from 'lucide-react';
+import { Server, Camera } from 'lucide-react';
+import { UsersIcon } from '@/components/icons/users';
+import { ShieldCheckIcon } from '@/components/icons/shield-check';
 
 const UserCard: React.FC<{
   title: string;
@@ -26,28 +28,28 @@ export const Users: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <UserCard 
-            title="Self-Hosters" 
+          <UserCard
+            title="Self-Hosters"
             description="Running Immich, Nextcloud, or PhotoPrism? Get the polished mobile experience your server deserves."
             icon={<Server size={24} />}
             colorClass="bg-indigo-100 text-indigo-600"
           />
-          <UserCard 
-            title="Families & Friends" 
+          <UserCard
+            title="Families & Friends"
             description="View shared albums easily without installing multiple apps. Just click the link and enjoy."
             icon={<UsersIcon size={24} />}
             colorClass="bg-rose-100 text-rose-600"
           />
-          <UserCard 
-            title="Creators" 
+          <UserCard
+            title="Creators"
             description="A unified viewer for client galleries and shared collections across different platforms."
             icon={<Camera size={24} />}
             colorClass="bg-amber-100 text-amber-600"
           />
-          <UserCard 
-            title="Privacy Focused" 
+          <UserCard
+            title="Privacy Focused"
             description="For those who prefer self-hosted solutions over cloud giants but demand a premium UX."
-            icon={<ShieldCheck size={24} />}
+            icon={<ShieldCheckIcon size={24} />}
             colorClass="bg-emerald-100 text-emerald-600"
           />
         </div>

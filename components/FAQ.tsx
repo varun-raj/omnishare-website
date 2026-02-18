@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { ChevronDown } from 'lucide-react';
+import { ChevronDownIcon } from '@/components/icons/chevron-down';
 
 const faqs = [
   {
@@ -15,9 +15,9 @@ const faqs = [
       "No. If someone shares an album link with you from a supported server, you can open it directly in OmniAlbum. However, features like upload and sync require a server connection you have credentials for.",
   },
   {
-    question: 'Is OmniAlbum free?',
+    question: 'How much does OmniAlbum cost?',
     answer:
-      'OmniAlbum is free to download with core features included. A one-time purchase unlocks premium features like background uploads, multiple server connections, and advanced metadata views.',
+      'OmniAlbum is available for a one-time purchase of $8.99 with no subscriptions or hidden fees. You get the full app with all features included — background uploads, multiple server connections, advanced metadata views, and all future updates.',
   },
   {
     question: 'Does OmniAlbum store my photos on your servers?',
@@ -55,7 +55,7 @@ const FAQItem: React.FC<{
       <span className="text-lg font-semibold text-zinc-900 pr-8 group-hover:text-brand-600 transition-colors">
         {question}
       </span>
-      <ChevronDown
+      <ChevronDownIcon
         size={20}
         className={`text-zinc-400 shrink-0 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}
       />
