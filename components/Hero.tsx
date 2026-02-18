@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Apple, Cloud, MapPin, CheckCircle, Shield, Sparkles, Search } from 'lucide-react';
+import { ArrowRight, Apple, RefreshCw, MapPin, CheckCircle, Lock, Layout, Search } from 'lucide-react';
 
 interface FloatingCardProps {
   children: React.ReactNode;
@@ -118,22 +118,22 @@ export const Hero: React.FC = () => {
             {/* 1. Top Left - Sync Photos (was Sync Active) */}
             <FloatingCard className="hidden md:flex top-12 left-0 lg:-left-8 bg-green-100 border-green-200/50" factor={-1.5} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-green-600 shadow-sm shrink-0">
-                    <Cloud size={20} />
+                    <RefreshCw size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-green-900">Sync Photos</p>
-                    <p className="text-xs text-green-700">Immich Server</p>
+                    <p className="text-xs text-green-700">Automatic Backup</p>
                 </div>
             </FloatingCard>
 
             {/* 2. Top Right - Private (was Encrypted) */}
             <FloatingCard className="hidden md:flex top-24 right-4 lg:right-0 bg-blue-100 border-blue-200/50" factor={-0.8} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
-                    <Shield size={20} />
+                    <Lock size={20} />
                 </div>
                 <div className="text-left">
                     <p className="text-sm font-bold text-blue-900">Private</p>
-                    <p className="text-xs text-blue-700">On-device only</p>
+                    <p className="text-xs text-blue-700">FaceID Secured</p>
                 </div>
             </FloatingCard>
 
@@ -151,11 +151,11 @@ export const Hero: React.FC = () => {
             {/* 4. Middle Right - Home Page Widgets (was Smart Sort) */}
             <FloatingCard className="hidden md:flex top-[45%] right-0 lg:-right-12 bg-indigo-100 border-indigo-200/50" factor={-1.2} mousePos={mousePos}>
                 <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-indigo-600 shadow-sm shrink-0">
-                    <Sparkles size={20} />
+                    <Layout size={20} />
                 </div>
                 <div className="text-left">
-                    <p className="text-sm font-bold text-indigo-900">Home Page Widgets</p>
-                    <p className="text-xs text-indigo-700">Interactive</p>
+                    <p className="text-sm font-bold text-indigo-900">Home Widgets</p>
+                    <p className="text-xs text-indigo-700">Daily Highlights</p>
                 </div>
             </FloatingCard>
 
