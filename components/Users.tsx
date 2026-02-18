@@ -21,7 +21,7 @@ export const Users: React.FC = () => {
     <section id="users" className="py-24 bg-zinc-50/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-zinc-900">Built for everyone.</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-zinc-900">Built for everyone.</h2>
           <p className="text-zinc-500 text-lg">Whether you host the server or just view the photos.</p>
         </div>
 

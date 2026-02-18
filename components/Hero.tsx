@@ -21,7 +21,7 @@ const FloatingCard: React.FC<FloatingCardProps> = ({
 
   return (
     <div 
-      className={`absolute z-10 bg-white p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border border-zinc-100 flex items-center gap-3 transition-transform duration-100 ease-out ${className}`}
+      className={`absolute z-10 p-4 rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.12)] border flex items-center gap-3 transition-transform duration-100 ease-out ${className}`}
       style={{ 
         transform: `translate(${translateX}px, ${translateY}px)` 
       }}
@@ -115,69 +115,69 @@ export const Hero: React.FC = () => {
 
             {/* Parallax Floating Cards (6 items) */}
             
-            {/* 1. Top Left - Sync (Far) */}
-            <FloatingCard className="hidden md:flex top-12 left-0 lg:-left-8" factor={-1.5} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-green-50 flex items-center justify-center text-green-600">
+            {/* 1. Top Left - Sync Photos (was Sync Active) */}
+            <FloatingCard className="hidden md:flex top-12 left-0 lg:-left-8 bg-green-100 border-green-200/50" factor={-1.5} mousePos={mousePos}>
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-green-600 shadow-sm shrink-0">
                     <Cloud size={20} />
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-zinc-900">Sync Active</p>
-                    <p className="text-xs text-zinc-500">Immich Server</p>
+                <div className="text-left">
+                    <p className="text-sm font-bold text-green-900">Sync Photos</p>
+                    <p className="text-xs text-green-700">Immich Server</p>
                 </div>
             </FloatingCard>
 
-            {/* 2. Top Right - Privacy (Medium) */}
-            <FloatingCard className="hidden md:flex top-24 right-4 lg:right-0" factor={-0.8} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600">
+            {/* 2. Top Right - Private (was Encrypted) */}
+            <FloatingCard className="hidden md:flex top-24 right-4 lg:right-0 bg-blue-100 border-blue-200/50" factor={-0.8} mousePos={mousePos}>
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 shadow-sm shrink-0">
                     <Shield size={20} />
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-zinc-900">Encrypted</p>
-                    <p className="text-xs text-zinc-500">On-device only</p>
+                <div className="text-left">
+                    <p className="text-sm font-bold text-blue-900">Private</p>
+                    <p className="text-xs text-blue-700">On-device only</p>
                 </div>
             </FloatingCard>
 
-            {/* 3. Middle Left - Location (Close) */}
-            <FloatingCard className="hidden md:flex top-[40%] left-8 lg:left-0" factor={-2.2} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-orange-50 flex items-center justify-center text-orange-600">
+            {/* 3. Middle Left - Location */}
+            <FloatingCard className="hidden md:flex top-[40%] left-8 lg:left-0 bg-orange-100 border-orange-200/50" factor={-2.2} mousePos={mousePos}>
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-orange-600 shadow-sm shrink-0">
                     <MapPin size={20} />
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-zinc-900">Tokyo, Japan</p>
-                    <p className="text-xs text-zinc-500">Added to map</p>
+                <div className="text-left">
+                    <p className="text-sm font-bold text-orange-900">Tokyo, Japan</p>
+                    <p className="text-xs text-orange-700">Added to map</p>
                 </div>
             </FloatingCard>
 
-            {/* 4. Middle Right - Smart Sort (Far) */}
-            <FloatingCard className="hidden md:flex top-[45%] right-0 lg:-right-12" factor={-1.2} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-indigo-50 flex items-center justify-center text-indigo-600">
+            {/* 4. Middle Right - Home Page Widgets (was Smart Sort) */}
+            <FloatingCard className="hidden md:flex top-[45%] right-0 lg:-right-12 bg-indigo-100 border-indigo-200/50" factor={-1.2} mousePos={mousePos}>
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-indigo-600 shadow-sm shrink-0">
                     <Sparkles size={20} />
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-zinc-900">Smart Sort</p>
-                    <p className="text-xs text-zinc-500">By date & time</p>
+                <div className="text-left">
+                    <p className="text-sm font-bold text-indigo-900">Home Page Widgets</p>
+                    <p className="text-xs text-indigo-700">Interactive</p>
                 </div>
             </FloatingCard>
 
-             {/* 5. Bottom Left - Search (Medium) */}
-             <FloatingCard className="hidden md:flex bottom-32 left-12 lg:left-8" factor={-0.9} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-pink-50 flex items-center justify-center text-pink-600">
+             {/* 5. Bottom Left - Search */}
+             <FloatingCard className="hidden md:flex bottom-32 left-12 lg:left-8 bg-pink-100 border-pink-200/50" factor={-0.9} mousePos={mousePos}>
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-pink-600 shadow-sm shrink-0">
                     <Search size={20} />
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-zinc-900">Search</p>
-                    <p className="text-xs text-zinc-500">"Sunset at beach"</p>
+                <div className="text-left">
+                    <p className="text-sm font-bold text-pink-900">Search</p>
+                    <p className="text-xs text-pink-700">"Sunset at beach"</p>
                 </div>
             </FloatingCard>
 
-            {/* 6. Bottom Right - Backup (Close) */}
-            <FloatingCard className="hidden md:flex bottom-40 right-12 lg:right-4" factor={-1.8} mousePos={mousePos}>
-                <div className="w-10 h-10 rounded-full bg-purple-50 flex items-center justify-center text-purple-600">
+            {/* 6. Bottom Right - Backed Up */}
+            <FloatingCard className="hidden md:flex bottom-40 right-12 lg:right-4 bg-purple-100 border-purple-200/50" factor={-1.8} mousePos={mousePos}>
+                <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center text-purple-600 shadow-sm shrink-0">
                     <CheckCircle size={20} />
                 </div>
-                <div>
-                    <p className="text-sm font-bold text-zinc-900">Backed Up</p>
-                    <p className="text-xs text-zinc-500">1,204 Photos</p>
+                <div className="text-left">
+                    <p className="text-sm font-bold text-purple-900">Backed Up</p>
+                    <p className="text-xs text-purple-700">1,204 Photos</p>
                 </div>
             </FloatingCard>
 

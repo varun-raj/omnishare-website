@@ -36,9 +36,9 @@ export const Navbar: React.FC = () => {
 
         {/* CTA */}
         <div className="hidden md:block">
-          <button className="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-lg shadow-zinc-900/10">
+          <a href="#" className="bg-zinc-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-zinc-800 transition-colors shadow-lg shadow-zinc-900/10 inline-block">
             Download App
-          </button>
+          </a>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -56,9 +56,9 @@ export const Navbar: React.FC = () => {
            <a href="#features" onClick={() => setIsMobileMenuOpen(false)} className="text-zinc-600 hover:text-brand-600 font-medium">Features</a>
            <a href="#providers" onClick={() => setIsMobileMenuOpen(false)} className="text-zinc-600 hover:text-brand-600 font-medium">Providers</a>
            <a href="#users" onClick={() => setIsMobileMenuOpen(false)} className="text-zinc-600 hover:text-brand-600 font-medium">Target Users</a>
-           <button className="bg-brand-600 text-white px-5 py-3 rounded-xl text-sm font-semibold w-full mt-4 shadow-lg shadow-brand-500/20">
+           <a href="#" className="bg-brand-600 text-white px-5 py-3 rounded-xl text-sm font-semibold w-full mt-4 shadow-lg shadow-brand-500/20 text-center block">
             Download App
-          </button>
+          </a>
         </div>
       )}
     </nav>

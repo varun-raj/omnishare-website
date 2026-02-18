@@ -5,6 +5,7 @@ import { Features } from './components/Features';
 import { Providers } from './components/Providers';
 import { Users } from './components/Users';
 import { Footer } from './components/Footer';
+import { AndroidCTA } from './components/AndroidCTA';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Features />
         <Providers />
         <Users />
+        <AndroidCTA />
       </main>
       <Footer />
     </div>

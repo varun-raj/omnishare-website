@@ -25,7 +25,7 @@ export const Features: React.FC = () => {
     <section id="features" className="py-24 bg-zinc-50/50">
       <div className="max-w-7xl mx-auto px-6">
         <div className="mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-zinc-900">Designed for your memories.</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-zinc-900">Designed for your memories.</h2>
           <p className="text-zinc-500 max-w-2xl text-lg">
             A native experience that feels right at home on your iPhone, packed with powerful features for power users and families alike.
           </p>

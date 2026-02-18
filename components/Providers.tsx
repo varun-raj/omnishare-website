@@ -19,7 +19,7 @@ export const Providers: React.FC = () => {
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-zinc-900">One app. Every provider.</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 text-zinc-900">One app. Every provider.</h2>
           <p className="text-zinc-500 text-lg">Seamless integration with your favorite self-hosted platforms.</p>
         </div>
 
